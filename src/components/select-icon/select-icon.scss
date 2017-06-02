@@ -1,0 +1,24 @@
+.select-icon {
+  &__list {
+    display: flex;
+  }
+
+  &__item {
+    padding: 5px;
+    position: relative;
+  }
+
+  &__overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(192, 192, 192, 0.25);
+  }
+
+  &__icon {
+    width: 40px;
+    height: 40px;
+  }
+}

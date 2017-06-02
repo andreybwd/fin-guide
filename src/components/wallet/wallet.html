@@ -1,0 +1,25 @@
+<ion-fab #fab>
+  <img ion-fab
+       class="wallet__icon"
+       src="{{iconsPath}}{{wallet.icon}}"/>
+  <ion-fab-list side="top" *ngIf="wallet.type === walletTypes.FREE">
+    <button ion-fab (click)="onAddFunds.emit(wallet); fab.close();">
+      <ion-icon name="md-add"></ion-icon>
+    </button>
+  </ion-fab-list>
+  <ion-fab-list side="right">
+    <button ion-fab (click)="onEdit.emit(wallet); fab.close();">
+      <ion-icon name="md-create"></ion-icon>
+    </button>
+  </ion-fab-list>
+  <ion-fab-list side="bottom">
+    <button ion-fab (click)="onDelete.emit(wallet); fab.close();">
+      <ion-icon name="md-close"></ion-icon>
+    </button>
+  </ion-fab-list>
+</ion-fab>
+<div class="wallet__content">
+  <span class="wallet__name">{{wallet.name}}</span>
+  <span class="wallet__sum">{{wallet.sum}}</span>
+  <span class="wallet__currency">({{currencies[wallet.currency].title}})</span>
+</div>

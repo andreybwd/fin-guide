@@ -1,0 +1,60 @@
+<!--
+  Generated template for the AddWalletPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span ion-text color="primary">Закрыть</span>
+      </button>
+    </ion-buttons>
+    <ion-title>Добавить счет</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form (ngSubmit)="addWallet(wallet)" #addWalletForm="ngForm">
+    <ion-row>
+      <ion-col>
+        <ion-list inset>
+          <ion-item>
+            <ion-input type="text"
+                       placeholder="Название"
+                       name="name"
+                       required
+                       [(ngModel)]="wallet.name"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <select-currency [selectedCurrencyName]="wallet.currency"
+                             (onSelectCurrency)="wallet.currency = $event"></select-currency>
+          </ion-item>
+
+          <ion-item>
+            <select-icon [selectedIcon]="wallet.icon"
+                         (onSelectIcon)="wallet.icon = $event"></select-icon>
+          </ion-item>
+
+        </ion-list>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <button class="submit-btn"
+                type="submit"
+                ion-button
+                full
+                [disabled]="!addWalletForm.form.valid">Добавить
+        </button>
+      </ion-col>
+    </ion-row>
+
+  </form>
+</ion-content>

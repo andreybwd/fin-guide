@@ -1,0 +1,11 @@
+<ion-list class="select-currency-group"
+          radio-group>
+  <ion-item class="select-currency-item"
+            *ngFor="let name of currenciesNames">
+    <ion-label>{{currencies[name].title}}</ion-label>
+    <ion-radio [value]="name"
+               [checked]="selectedCurrencyName === name"
+               (ionSelect)="onSelectCurrency.emit(name)">
+    </ion-radio>
+  </ion-item>
+</ion-list>

@@ -1,0 +1,11 @@
+<div class="select-icon__list">
+  <div class="select-icon__item"
+       *ngFor="let icon of icons"
+       (click)="onSelectIcon.emit(icon)">
+    <img class="select-icon__icon"
+         src="{{iconsPath}}{{icon}}"/>
+    <div class="select-icon__overlay"
+         *ngIf="icon === selectedIcon"></div>
+  </div>
+</div>
+

@@ -1,0 +1,22 @@
+select-currency {
+  .select-currency-group {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0;
+  }
+
+  .select-currency-item {
+    display: flex;
+    position: relative;
+    border-bottom: none !important;
+  }
+
+  ion-label {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  ion-radio {
+    margin: 8px 0 !important;
+  }
+}

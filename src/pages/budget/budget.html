@@ -1,0 +1,63 @@
+<!--
+  Generated template for the BudgetPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Текущий бюджет</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div class="budget-summary"></div>
+  <!-- TODO: move to enums -->
+  <ion-segment [(ngModel)]="activeWalletType">
+    <ion-segment-button [value]="WALLET_TYPES.HOUSEHOLD"
+                        (ionSelect)="activeWalletType = WALLET_TYPES.HOUSEHOLD">
+      Затраты
+    </ion-segment-button>
+    <ion-segment-button [value]="WALLET_TYPES.SAVING"
+                        (ionSelect)="activeWalletType = WALLET_TYPES.SAVING">
+      Накопления
+    </ion-segment-button>
+    <ion-segment-button [value]="WALLET_TYPES.INVESTMENT"
+                        (ionSelect)="activeWalletType = WALLET_TYPES.INVESTMENT">
+      Инвестиции
+    </ion-segment-button>
+  </ion-segment>
+
+  <ion-row class="budget-summary">
+    <ion-col>
+      <div class="budget-section">
+        <ion-icon class="budget-section__add"
+                  name="md-add-circle"
+                  (click)="addWalletModal(WALLET_TYPES.FREE)"></ion-icon>
+        <!-- TODO: implement filter -->
+        <div *ngFor="let wallet of wallets | objectLoop">
+          <wallet *ngIf="wallet.type === WALLET_TYPES.FREE"
+                  [wallet]="wallet"
+                  (onAddFunds)="addFundsModal($event)"></wallet>
+        </div>
+      </div>
+    </ion-col>
+    <ion-col>
+      <div class="budget-section">
+        <ion-icon class="budget-section__add"
+                  name="md-add-circle"
+                  (click)="addWalletModal(activeWalletType)"></ion-icon>
+        <div *ngFor="let wallet of wallets | objectLoop">
+          <wallet *ngIf="wallet.type === activeWalletType"
+                  [wallet]="wallet"></wallet>
+        </div>
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-content>
