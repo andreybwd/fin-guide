@@ -44,7 +44,9 @@
         <div *ngFor="let wallet of wallets | objectLoop">
           <wallet *ngIf="wallet.type === WALLET_TYPES.FREE"
                   [wallet]="wallet"
-                  (onAddFunds)="addFundsModal($event)"></wallet>
+                  (onAddFunds)="addFundsModal($event)"
+                  (onEdit)="editModal($event)"
+                  (onDelete)="removeWallet($event)"></wallet>
         </div>
       </div>
     </ion-col>

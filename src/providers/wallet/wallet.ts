@@ -5,6 +5,7 @@ import SETTINGS from '../../app/app-settings';
 import { ApiProvider } from '../api/api';
 import { Store } from '@ngrx/store';
 import { WALLET } from '../../store/action-types';
+import * as WALLET_STATUSES from './wallet-statuses';
 
 /*
  Generated class for the WalletProvider provider.
@@ -37,6 +38,27 @@ export class WalletProvider {
     });
 
     this.apiProvider.postCall(SETTINGS.API.WALLET, wallet)
+      .subscribe((res) => res);
+  }
+
+  public save(wallet: Wallet) {
+    this.store.dispatch({
+      payload: wallet,
+      type: WALLET.UPDATE
+    });
+
+    this.apiProvider.putCall(SETTINGS.API.WALLET, wallet)
+      .subscribe((res) => res);
+  }
+
+  public remove(wallet: Wallet) {
+    const deletedWallet: Wallet = Object.assign({}, wallet, { status: WALLET_STATUSES.DELETED });
+    this.store.dispatch({
+      payload: wallet.id,
+      type: WALLET.DELETE
+    });
+
+    this.apiProvider.putCall(SETTINGS.API.WALLET, deletedWallet)
       .subscribe((res) => res);
   }
 }

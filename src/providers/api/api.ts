@@ -28,6 +28,10 @@ export class ApiProvider {
     return this.processHttpResponse(this.http.put(url, params, this.getRequestOptions()));
   }
 
+  public deleteCall(url: string): Observable<any> {
+    return this.processHttpResponse(this.http.delete(url, this.getRequestOptions()));
+  }
+
   private extractData(res: Response) {
     return res.json();
   }

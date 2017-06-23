@@ -5,6 +5,7 @@ import { AddWalletPage } from '../add-wallet/add-wallet';
 import { WalletProvider } from '../../providers/wallet/wallet';
 import { Wallet } from '../../providers/wallet/wallet.interface';
 import { AddFundsPage } from '../add-funds/add-funds';
+import { EditWalletPage } from '../edit-wallet/edit-wallet';
 
 /**
  * Generated class for the BudgetPage page.
@@ -46,4 +47,12 @@ export class BudgetPage {
     addFundsModal.present();
   }
 
+  public editModal(wallet: Wallet) {
+    const editWalletModal = this.modalCtrl.create(EditWalletPage, { wallet });
+    editWalletModal.present();
+  }
+
+  public removeWallet(wallet: Wallet) {
+    this.walletProvider.remove(wallet);
+  }
 }

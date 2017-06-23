@@ -17,6 +17,16 @@ export function walletsReducer(state: any = initialState, action: Action) {
     case WALLET.ADD:
       return Object.assign({}, state, { [payload.id]: payload });
 
+    case WALLET.UPDATE:
+      const newWallet = Object.assign({}, state[payload.id], payload);
+      return Object.assign({}, state, { [payload.id]: newWallet });
+
+    case WALLET.DELETE:
+      let deletedState = Object.assign({}, state);
+      const deletedId: string = payload;
+      delete deletedState[deletedId];
+      return Object.assign({}, state, deletedState);
+
     case WALLET.TRANSACTION:
       const transaction: Transaction = payload;
       let walletTo: Wallet = Object.assign({}, state[transaction.widTo]);
